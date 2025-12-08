@@ -1,14 +1,14 @@
 import os
-from sqlmodel import create_engine, text
-from sqlalchemy.ext.asyncio import AsyncEngine
+from sqlmodel import text
+from sqlalchemy.ext.asyncio import create_async_engine
 from src.config import Config
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = AsyncEngine(create_engine(
+engine = create_async_engine(
     url=Config.DATABASE_URL,
     echo=True
-))
+)
 
 
 async def initdb():
